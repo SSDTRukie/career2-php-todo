@@ -16,7 +16,7 @@ class Todo
         '作業中',
         '完了',
     ];
-//GOD橋口
+
     // コンストラクタ
     public function __construct()
     {
@@ -68,12 +68,24 @@ class Todo
     }
 
     /**
-     * タスクを削除する
+     * タスクを全削除する
      */
-    public function delete()
+    public function deleteAll()
     {
         $sql = "UPDATE `todo` SET `deleted_at` = NOW()";
         $stmt = $this->dbh->prepare($sql);
+        $stmt->execute();
+    }
+
+    /**
+     * タスクを削除する
+     * @param int $id
+     */
+    public function delete(int $id)
+    {
+        $sql = "UPDATE `todo` SET `deleted_at` = NOW() WHERE id = :id";
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
     }
 }
