@@ -24,3 +24,4 @@ $container['phpmig.adapter'] = function ($c) {
 $container['phpmig.migrations_path'] = __DIR__ . DIRECTORY_SEPARATOR . 'migrations';
 
 return $container;
+//asd
