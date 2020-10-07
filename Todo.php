@@ -75,6 +75,7 @@ class Todo
         $stmt->bindParam(':status', $status, PDO::PARAM_INT);
         $stmt->execute();
     }
+    
 
     /**
      * タスクを全削除する
